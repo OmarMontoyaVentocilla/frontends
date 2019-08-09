@@ -1,5 +1,5 @@
 const Menu = [
-  { header: 'Maestras' },
+  { header: 'Pedido' },
   {
     title: 'Proovedor',
     group: 'Maestras',
@@ -7,47 +7,14 @@ const Menu = [
     name: 'Proovedor',
     href: '/dashboard'
   },
-  // {
-  //   title: 'Chat',
-  //   group: 'apps',
-  //   icon: 'chat_bubble',
-  //   target: '_blank',
-  //   name: 'Chat',
-  //   href: '/chat/messaging'
-  // },
-  // {
-  //   title: 'Inbox',
-  //   group: 'apps',
-  //   name: 'Mail',
-  //   target: '_blank',
-  //   icon: 'email',
-  //   href: '/mail/all'
-  // },
-  // {
-  //   title: 'Media',
-  //   group: 'apps',
-  //   name: 'Media',
-  //   icon: 'perm_media',
-  //   href: '/media'
-  // },
-  // {
-  //   title: 'Widgets',
-  //   group: 'widgets',
-  //   component: 'widgets',
-  //   icon: 'widgets',
-  //   items: [
-  //     { name: 'social', title: 'Social', href: '/widgets/social' },
-  //     {
-  //       name: 'statistic',
-  //       title: 'Statistic',
-  //       badge: 'new',
-  //       href: '/widgets/statistic'
-  //     },
-  //     { name: 'chart', title: 'Chart', href: '/widgets/chart' },
-  //     { name: 'list', title: 'List', href: '/widgets/list' }
-  //   ]
-  // },
-  { header: 'UI Elements' },
+  {
+    title: 'Empty',
+    group: 'extra',
+    icon: 'insert_drive_file',
+    href: '/empty'
+  },
+  { divider: true },
+  { header: 'Almacen' },
   {
     title: 'General',
     group: 'components',
@@ -75,46 +42,6 @@ const Menu = [
     ]
   },
   {
-    title: 'Pickers',
-    group: 'pickers',
-    component: 'picker',
-    icon: 'filter_vintage',
-    items: [
-      { name: 'timepicker', title: 'Timepicker', href: '/pickers/timepicker' },
-      { name: 'datepicker', title: 'Datepicker', href: '/pickers/datepicker' }
-    ]
-  },
-  {
-    title: 'Layout',
-    group: 'layout',
-    component: 'layout',
-    icon: 'view_compact',
-    items: [
-      {
-        name: 'bottom-sheets',
-        title: 'Bottom panels',
-        component: 'components/bottom-sheets'
-      },
-      {
-        name: 'expansion-panels',
-        title: 'Expansion panels',
-        component: 'components/expansion-panels'
-      },
-      { name: 'footer', title: 'Footer', component: 'components/footer' },
-      { name: 'lists', title: 'Lists', component: 'components/lists' },
-      {
-        name: 'jumbotrons',
-        title: 'Jumbotrons',
-        badge: 'new',
-        component: 'components/jumbotrons'
-      },
-      { name: 'menus', title: 'Menus', component: 'components/menus' },
-      { name: 'tabs', title: 'Tabs', component: 'components/tabs' },
-      { name: 'toolbar', title: 'Toolbars', component: 'components/toolbar' },
-      { name: 'timeline', title: 'Timeline', component: 'components/timeline' }
-    ]
-  },
-  {
     title: 'Forms & Controls',
     group: 'forms',
     component: 'forms',
@@ -137,20 +64,7 @@ const Menu = [
       { name: 'editors', title: 'Editors', href: '/forms/editors' }
     ]
   },
-  { divider: true },
-  { header: 'Extras' },
-  {
-    title: 'Login',
-    group: 'extra',
-    icon: 'list',
-    href: '/login'
-  },
-  {
-    title: 'Empty',
-    group: 'extra',
-    icon: 'insert_drive_file',
-    href: '/empty'
-  }
+ 
 ];
 // reorder menu
 Menu.forEach(item => {
