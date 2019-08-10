@@ -3,9 +3,50 @@
     <v-toolbar card dense color="transparent">
       <v-toolbar-title><h4>Proovedor</h4></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn flat icon color="green" @click.prevent="addDemo()">
+     
+      <v-btn flat icon color="green" dark @click.prevent="showModal()">
         <v-icon>control_point</v-icon>
       </v-btn>
+       
+
+
+
+<v-app>
+    <v-layout justify-center>
+      <v-dialog v-model="dialog" persistent max-width="600px">
+       <v-card ref="form">
+          <v-card-title>
+            <span class="headline">Agregar Demo</span>
+          </v-card-title>
+          <v-card-text>
+            
+            <v-form>
+            <v-container grid-list-md>
+              <v-layout wrap>
+                <v-flex xs12 sm12 md12 lg12>
+                  <v-text-field v-model="texto" label="Texto" outlined></v-text-field>
+                </v-flex>
+              </v-layout>
+            </v-container>
+            </v-form>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="red" text @click="dialog = false">Cerrar</v-btn>
+            <v-btn color="blue" text @click.prevent="addDemo">Guardar</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+</v-layout>
+  </v-app>
+
+
+
+
+
+
+
+
       <v-btn icon @click.prevent="refresh()">
         <v-icon>refresh</v-icon>
       </v-btn>
@@ -41,7 +82,26 @@
       </template>
       <v-divider></v-divider>
     </v-card-text>
+
+
+     <v-snackbar
+      :timeout=timeout
+      bottom
+      right
+      color="success"
+      v-model="mensajeAlerta"
+    >
+      correcto!
+      <v-btn flat icon dark @click.native="mensajeAlerta = false">
+        <v-icon>close</v-icon>
+      </v-btn>
+</v-snackbar>
+
+
   </v-card>
+
+
+  
 </template>
 
 <script>
@@ -50,6 +110,10 @@ export default {
   data() {
     return {
       demo: [],
+      texto: "",
+      timeout: 3000,
+      mensajeAlerta: false,
+      dialog: false,
       headers: [
         // {
         //   text: "",
@@ -83,11 +147,27 @@ export default {
         console.log(error);
       }
     },
+
     async addDemo() {
-      alert("agregar");
+      try {
+        const response = await this.$axios.$post(
+          "https://50vfdc57j0.execute-api.us-east-1.amazonaws.com/dev/todos",
+          {
+            text: this.texto
+          }
+        );
+        this.dialog = false;
+        this.fetchDemo();
+        this.mensajeAlerta = true;
+      } catch (error) {
+        console.log(error);
+      }
     },
     refresh() {
       this.fetchDemo();
+    },
+    showModal() {
+      this.dialog = true;
     },
     async deleteDemo(id) {
       try {
@@ -96,6 +176,7 @@ export default {
           `https://50vfdc57j0.execute-api.us-east-1.amazonaws.com/dev/todos/${demoId}`
         );
         this.fetchDemo();
+        this.mensajeAlerta = true;
       } catch (error) {
         console.log(error);
       }
