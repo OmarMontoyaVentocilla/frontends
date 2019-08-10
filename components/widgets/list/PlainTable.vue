@@ -3,6 +3,9 @@
     <v-toolbar card dense color="transparent">
       <v-toolbar-title><h4>Proovedor</h4></v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-btn flat icon color="green" @click.prevent="addDemo()">
+        <v-icon>control_point</v-icon>
+      </v-btn>
       <v-btn icon @click.prevent="refresh()">
         <v-icon>refresh</v-icon>
       </v-btn>
@@ -79,6 +82,9 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    async addDemo() {
+      alert("agregar");
     },
     refresh() {
       this.fetchDemo();
