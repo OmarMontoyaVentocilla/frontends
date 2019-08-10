@@ -69,10 +69,14 @@ export default {
   },
   methods: {
     async fetchDemo() {
-      const ip = await this.$axios.$get(
-        "https://50vfdc57j0.execute-api.us-east-1.amazonaws.com/dev/todos"
-      );
-      console.log(ip);
+      try {
+        const ip = await this.$axios.$get(
+          "https://50vfdc57j0.execute-api.us-east-1.amazonaws.com/dev/todos"
+        );
+        console.log(ip);
+      } catch (error) {
+        console.log(error);
+      }
     }
   },
   computed: {
