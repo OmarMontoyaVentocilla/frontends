@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-toolbar card dense color="transparent">
-      <v-toolbar-title><h4>Project</h4></v-toolbar-title>
+      <v-toolbar-title><h4>Proovedor</h4></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon>
         <v-icon>more_vert</v-icon>
@@ -42,31 +42,41 @@
 </template>
 
 <script>
-import { Projects } from '@/api/project';
+import { Projects } from "@/api/project";
 export default {
-  data () {
+  data() {
     return {
       headers: [
         {
-          text: '',
-          align: 'center',
+          text: "",
+          align: "center",
           sortable: false,
-          value: 'avatar'
+          value: "avatar"
         },
         {
-          text: 'Name',
-          align: 'left',
-          value: 'name'
+          text: "Name",
+          align: "left",
+          value: "name"
         },
-        { text: 'Deadline', value: 'deadline' },
-        { text: 'Progress', value: 'progress' },
-        { text: 'Action', value: 'action', align: 'right' },
-
-      ],
+        { text: "Deadline", value: "deadline" },
+        { text: "Progress", value: "progress" },
+        { text: "Action", value: "action", align: "right" }
+      ]
     };
   },
+  created() {
+    this.fetchDemo();
+  },
+  methods: {
+    async fetchDemo() {
+      const ip = await this.$axios.$get(
+        "https://50vfdc57j0.execute-api.us-east-1.amazonaws.com/dev/todos"
+      );
+      console.log(ip);
+    }
+  },
   computed: {
-    projects () {
+    projects() {
       return Projects;
     }
   }
